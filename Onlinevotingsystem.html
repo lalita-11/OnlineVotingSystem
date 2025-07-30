@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Online Voting System</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 8px #ccc;
+  }
+  h2 {
+    text-align: center;
+  }
+  form {
+    margin-top: 20px;
+  }
+  label {
+    display: block;
+    margin: 15px 0 5px;
+  }
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  button {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    background: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  #message {
+    margin-top: 20px;
+    font-weight: bold;
+    color: green;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h2>Online Voting System</h2>
+
+<form id="voteForm">
+  <label><input type="radio" name="candidate" value="Alice" required /> Alice</label>
+  <label><input type="radio" name="candidate" value="Bob" /> Bob</label>
+  <label><input type="radio" name="candidate" value="Charlie" /> Charlie</label>
+
+  <button type="submit">Submit Vote</button>
+</form>
+
+<div id="message"></div>
+
+<script>
+  const form = document.getElementById("voteForm");
+  const message = document.getElementById("message");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const selected = document.querySelector('input[name="candidate"]:checked');
+    if (selected) {
+      // Here we would normally send data to backend.
+      // For demo, just show a message.
+      message.textContent = `Thank you for voting for ${selected.value}!`;
+      form.reset();
+    } else {
+      message.textContent = "Please select a candidate.";
+    }
+  });
+</script>
+
+</body>
+</html>
